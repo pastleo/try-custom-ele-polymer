@@ -5,6 +5,7 @@ try web components and LitElement by PastLeo
 
 ```sh
 npm install -g http-server
+yarn
 ```
 
 > or any simple static web server
