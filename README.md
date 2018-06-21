@@ -4,16 +4,14 @@ try web components and LitElement by PastLeo
 ## Requirements
 
 ```sh
-npm install -g http-server
+npm install -g polymer-cli@next
 yarn
 ```
-
-> or any simple static web server
 
 ## Run the project
 
 ```sh
-http-server
+polymer serve
 ```
 
 then head to browser, open inspector

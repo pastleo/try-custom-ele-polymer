@@ -1,16 +1,22 @@
-import { html, render as litRender } from '/node_modules/lit-html/lit-html.js';
+import { LitElement, html } from '@polymer/lit-element';
 
-class HelloCustomEle extends HTMLElement {
+const color1 = '#5bbd72'
+const color2 = '#42a2c3'
+
+class HelloCustomEle extends LitElement {
+  static get properties() { return { color: String } }
+
   constructor() {
-    super()
-    this.attachShadow({mode: 'open'});
-    litRender(this.render('#5bbd72'), this.shadowRoot);
+    super();
+    this.color = this.color || color1;
   }
 
-  render(color) {
+  _render({ color }) {
     return html`
       <style> h1 { color: ${color}; } </style>
-      <h1>hello-custom-ele rendered!</h1>
+      <h1 on-click="${() => { this.color = this.color === color1 ? color2 : color1 } }">
+        hello-custom-ele rendered!
+      </h1>
     `
   }
 }

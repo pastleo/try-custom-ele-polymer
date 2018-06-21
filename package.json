@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@polymer/lit-element": "^0.5.2",
     "lit-html": "^0.10.2"
   }
 }
