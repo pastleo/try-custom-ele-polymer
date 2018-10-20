@@ -1,8 +1,14 @@
 class HelloCustomEle extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `
-      <h1>hello-custom-ele rendered!</h1>
-    `;
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+      <style> h1 { color: green; } </style>
+      <link href='./elements/hello-custom-ele.css' rel='stylesheet'>
+      <h1>
+        <span>hello-custom-ele</span>
+        rendered!
+      </h1>
+    `
   }
 }
 
