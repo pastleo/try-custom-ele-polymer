@@ -1,24 +1,27 @@
-import { html, render } from 'https://unpkg.com/lit-html@0.12.0/lit-html.js?module'
+import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.2/lit-element.js?module'
 
-class HelloCustomEle extends HTMLElement {
-  connectedCallback() {
-    this.attachShadow({mode: 'open'});
-    this.render('green')
+class HelloCustomEle extends LitElement {
+  constructor() {
+    super()
+    this.color = 'green'
   }
+  handleClick() {
+    this.color = 'purple'
+  }
+  render() {
+    return html`
+      <style> h1 { color: ${this.color}; } </style>
+      <link href='./elements/hello-custom-ele.css' rel='stylesheet'>
+      <h1 @click=${() => this.handleClick()}>
+        <span>hello-custom-ele</span>
+        rendered!
+      </h1>
+    `
+  }
+}
 
-  render(color) {
-    render(
-      html`
-        <style> h1 { color: ${color}; } </style>
-        <link href='./elements/hello-custom-ele.css' rel='stylesheet'>
-        <h1 @click=${() => this.render('purple')}>
-          <span>hello-custom-ele</span>
-          rendered!
-        </h1>
-      `,
-      this.shadowRoot
-    )
-  }
+HelloCustomEle.properties = {
+  color: { type: String }
 }
 
 customElements.define('hello-custom-ele', HelloCustomEle);
